@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plandit.Data;
+using ElectronNET.API;
 
 namespace Plandit
 {
@@ -55,6 +56,13 @@ namespace Plandit
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+
+            ElectronBootstrap();
+        }
+
+        void ElectronBootstrap()
+        {
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }
     }
 }
