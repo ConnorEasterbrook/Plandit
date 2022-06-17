@@ -18,12 +18,10 @@ namespace Plandit
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host
-                .CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseElectron(args);
-                    webBuilder.UseStartup<Startup>();
-                });
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseElectron(args);
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }
