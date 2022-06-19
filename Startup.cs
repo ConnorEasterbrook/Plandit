@@ -64,9 +64,9 @@ namespace Plandit
             }
         }
 
-        void ElectronBootstrap()
+        async void ElectronBootstrap()
         {
-            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            await Electron.WindowManager.CreateWindowAsync();
         }
     }
 }
