@@ -3,33 +3,32 @@
     x:Class="Plandit.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Plandit">
+    xmlns:local="clr-namespace:Plandit"
+    
+    Shell.NavBarIsVisible="False"
+    
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource ExoWebDarkMid}}"
+    FlyoutWidth="200">
 
     <Shell.Resources>
         <StyleSheet Source="./Resources/Styles/ShellStyle.css" />
     </Shell.Resources>
 
-    <Shell.TitleView>
-        <StackLayout>
-            <Label Text="Plandit" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-    </Shell.TitleView>
-
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid class="NavGrid">
+            <Grid ColumnDefinitions="25, *" Padding="10">
                 <Image Source="{Binding Icon}" />
-                <Label Text="{Binding Title}" />
+                <Label Grid.Column="1" Text="{Binding Title}" FontAttributes="Bold" FontSize="20" Margin="10" />
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
 
-    <FlyoutItem Title="Home">
-        <ShellContent Title="Plandit Projects" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    <FlyoutItem Title="Home" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Test2">
-        <ShellContent Title="Test" ContentTemplate="{DataTemplate local:MainPage}" Route="Test" />
+    <FlyoutItem Title="Test2" Icon="document.png">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="Test" />
     </FlyoutItem>
 
 </Shell>

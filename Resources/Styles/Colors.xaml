@@ -34,8 +34,9 @@
     <Color x:Key="ExoWebDarkViolet">#3B3355</Color>
     <Color x:Key="ExoWebDarkMid">#5D5D81</Color>
     <Color x:Key="ExoWebDarkLight">#BFCDE0</Color>
-    <Color x:Key="ExoWebDarkGray">#1E1D1E</Color>
+    <Color x:Key="ExoWebDarkGray">#323031</Color>
+    <Color x:Key="ExoWebDarkerGray">#1E1D1E</Color>
 
-    <Color x:Key="Test">#323031</Color>
+    <Color x:Key="Test">#32A031</Color>
 
 </ResourceDictionary>
