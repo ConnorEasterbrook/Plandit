@@ -1,9 +1,11 @@
 ^contentpage 
 {
-    background-color: lightpink;
+    
+    justify-content: center;
+    text-align: center;
 }
 
 ^button
 {
-    background-color: red;
+    
 }

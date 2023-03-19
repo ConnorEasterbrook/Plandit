@@ -11,12 +11,14 @@ public partial class MainPage : ContentPage
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
-		count+= 2;
+		count++;
 
 		if (count == 1)
 			CounterBtn.Text = $"Clicked {count} time";
 		else
 			CounterBtn.Text = $"Clicked {count} times";
+
+		Application.Current.UserAppTheme = count % 2 == 0 ? AppTheme.Light : AppTheme.Dark;
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}

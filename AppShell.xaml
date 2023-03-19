@@ -3,12 +3,33 @@
     x:Class="Plandit.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Plandit"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:Plandit">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.Resources>
+        <StyleSheet Source="./Resources/Styles/ShellStyle.css" />
+    </Shell.Resources>
+
+    <Shell.TitleView>
+        <StackLayout>
+            <Label Text="Plandit" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid class="NavGrid">
+                <Image Source="{Binding Icon}" />
+                <Label Text="{Binding Title}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Home">
+        <ShellContent Title="Plandit Projects" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Test2">
+        <ShellContent Title="Test" ContentTemplate="{DataTemplate local:MainPage}" Route="Test" />
+    </FlyoutItem>
 
 </Shell>
