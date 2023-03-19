@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
+    <Color x:Key="Primary">#FFFFFF</Color>
+    <Color x:Key="Secondary">#1E1D1E</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
@@ -31,11 +31,17 @@
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
 
-    <Color x:Key="ExoWebDarkViolet">#3B3355</Color>
-    <Color x:Key="ExoWebDarkMid">#5D5D81</Color>
-    <Color x:Key="ExoWebDarkLight">#BFCDE0</Color>
-    <Color x:Key="ExoWebDarkGray">#323031</Color>
-    <Color x:Key="ExoWebDarkerGray">#1E1D1E</Color>
+    <Color x:Key="ExowebDarkAccent">#3B3355</Color>
+    <Color x:Key="ExowebDarkDecor">#5D5D81</Color>
+    <Color x:Key="ExowebDarkItem">#1E1D1E</Color>
+    <Color x:Key="ExowebDarkBackground">#323031</Color>
+    <Color x:Key="ExowebDarkText">#FFFFFF</Color>
+
+    <Color x:Key="ExowebLightAccent">#5D5D81</Color>
+    <Color x:Key="ExowebLightDecor">#BFCDE0</Color>
+    <Color x:Key="ExowebLightItem">#ACBFA4</Color>
+    <Color x:Key="ExowebLightBackground">#E2E8CE</Color>
+    <Color x:Key="ExowebLightText">#323031</Color>
 
     <Color x:Key="Test">#32A031</Color>
 

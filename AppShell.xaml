@@ -7,7 +7,7 @@
     
     Shell.NavBarIsVisible="False"
     
-    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource ExoWebDarkMid}}"
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}"
     FlyoutWidth="200">
 
     <Shell.Resources>
