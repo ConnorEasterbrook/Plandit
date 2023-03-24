@@ -6,6 +6,15 @@
     <ContentPage.Resources>
         <StyleSheet Source="/Resources/Styles/MainPage.css" />
     </ContentPage.Resources>
+    
+    <!-- TODO:
+    Step 1: Create a basic To-do list that can be reordered
+    Step 2: Get data saving sorted
+    Step 3: Allow for folders to store to-do lists
+    Step 4: Allow for to-do tasks inside to-do tasks
+    Step 5: Allow for time management and linking to calendars
+    Step 6: Create push notifications
+    Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress / Milestones) -->
 
     <ScrollView>
         <VerticalStackLayout
