@@ -16,6 +16,11 @@ public partial class MainPage : ContentPage
 		BindingContext = this;
 	}
 
+	private void ChangeLightMode(object sender, EventArgs e)
+	{
+        /*Application.Current.UserAppTheme = count % 2 == 0 ? AppTheme.Light : AppTheme.Dark;*/
+    }
+
 	private void AddTaskOnClick(object sender, EventArgs e)
 	{
 		if (!string.IsNullOrEmpty(taskEntry.Text))
@@ -24,6 +29,15 @@ public partial class MainPage : ContentPage
             taskEntry.Text = string.Empty;
         }
 	}
+
+	private void DeleteTaskOnClick(object sender, EventArgs e)
+	{
+        var task = (sender as Button).BindingContext as Task;
+        if(task != null)
+        {
+            tasks.Remove(task);
+        }
+    }
 }
 
 public class Task

@@ -16,21 +16,102 @@
     Step 6: Create push notifications
     Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress / Milestones) -->
 
-    <StackLayout>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30, 0"
-            VerticalOptions="Center">
-            <Entry x:Name="taskEntry" Placeholder="New Todo" />
-            <Button Text="Add Todo" Clicked="AddTaskOnClick" />
-            <ListView x:Name="todoListView" ItemsSource="{Binding tasks}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding TaskItem}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </VerticalStackLayout>
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Frame
+            Grid.Row="0"
+            Margin="10, 5"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" >
+
+            <VerticalStackLayout>
+                <Label Text="Project Description" />
+                <Label Text="Project Description" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame
+            Grid.Row="1"
+            Margin="10, 5"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" >
+
+            <VerticalStackLayout>
+                <Label Text="Project Summary" />
+                <Label Text="Project Summary" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Border
+            Grid.Row="2"
+            Margin="10, 5" 
+            BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightItem}, Dark={StaticResource ExowebDarkItem}}" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8" />
+            </Border.StrokeShape>
+            
+            <ScrollView>
+
+                <StackLayout
+                    VerticalOptions="StartAndExpand"
+                    Spacing="25"
+                    Padding="30, 30">
+
+                    <Entry 
+                        x:Name="taskEntry" 
+                        Placeholder="New Todo" />
+
+                    <Button 
+                        Text="Add Todo" 
+                        Clicked="AddTaskOnClick" />
+
+                    <ListView 
+                        x:Name="todoListView" 
+                        ItemsSource="{Binding tasks}" >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid
+                                        Padding="0" >
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame
+                                            Grid.Column="0">
+
+                                            <Label 
+                                                Text="{Binding TaskItem}" 
+                                                x:Name="TaskItem" 
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="StartAndExpand" />
+                                        </Frame>
+
+                                        <Frame
+                                            Grid.Column="1">
+
+                                            <Button 
+                                                Clicked="DeleteTaskOnClick" 
+                                                MaximumWidthRequest="200"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand" />
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+        </ScrollView>
+        </Border>
+    </Grid>
 
 </ContentPage>
