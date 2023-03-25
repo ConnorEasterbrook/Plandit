@@ -6,7 +6,7 @@
     <ContentPage.Resources>
         <StyleSheet Source="/Resources/Styles/MainPage.css" />
     </ContentPage.Resources>
-    
+
     <!-- TODO:
     Step 1: Create a basic To-do list that can be reordered
     Step 2: Get data saving sorted
@@ -16,41 +16,21 @@
     Step 6: Create push notifications
     Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress / Milestones) -->
 
-    <ScrollView>
+    <StackLayout>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
+            Padding="30, 0"
             VerticalOptions="Center">
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Project Name"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            
-
+            <Entry x:Name="taskEntry" Placeholder="New Todo" />
+            <Button Text="Add Todo" Clicked="AddTaskOnClick" />
+            <ListView x:Name="todoListView" ItemsSource="{Binding tasks}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding TaskItem}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </VerticalStackLayout>
-    </ScrollView>
+    </StackLayout>
 
 </ContentPage>

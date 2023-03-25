@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Plandit"
     
     Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled"
     
     FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}"
     FlyoutWidth="200">

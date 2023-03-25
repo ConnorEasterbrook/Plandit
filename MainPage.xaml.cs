@@ -1,26 +1,33 @@
-﻿namespace Plandit;
+﻿using System.Collections.ObjectModel;
+
+namespace Plandit;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	private ObservableCollection<Task> _tasks = new ObservableCollection<Task>();
+    public ObservableCollection<Task> tasks
+	{
+		get { return _tasks; }
+	}
 
-	public MainPage()
+    public MainPage()
 	{
 		InitializeComponent();
+		BindingContext = this;
 	}
 
-    private void OnCounterClicked(object sender, EventArgs e)
+	private void AddTaskOnClick(object sender, EventArgs e)
 	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		Application.Current.UserAppTheme = count % 2 == 0 ? AppTheme.Light : AppTheme.Dark;
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		if (!string.IsNullOrEmpty(taskEntry.Text))
+		{
+            tasks.Add(new Task { TaskItem = taskEntry.Text });
+            taskEntry.Text = string.Empty;
+        }
 	}
+}
+
+public class Task
+{
+	public string TaskItem { get; set; }
 }
 
