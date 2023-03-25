@@ -23,38 +23,32 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Frame
+        <Border
             Grid.Row="0"
-            Margin="10, 5"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand" >
+            Margin="10, 5" 
+            Padding="8" >
 
             <VerticalStackLayout>
-                <Label Text="Project Description" />
-                <Label Text="Project Description" />
+                <Label Text="Project Title" />
+                <Label Text="Project Deadline" />
             </VerticalStackLayout>
-        </Frame>
+        </Border>
 
-        <Frame
+        <Border
             Grid.Row="1"
             Margin="10, 5"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand" >
+            Padding="8" >
 
             <VerticalStackLayout>
-                <Label Text="Project Summary" />
-                <Label Text="Project Summary" />
+                <Label Text="Project Description" />
+                <Label Text="Well this project is just a text that will hopefully represent exactly how a fully set up project will look. An important part is making sure that this row can be scrolled away from because it's a bit obnoxious to have a big ol description box like this constantly in your face." />
             </VerticalStackLayout>
-        </Frame>
+        </Border>
 
         <Border
             Grid.Row="2"
-            Margin="10, 5" 
-            BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightItem}, Dark={StaticResource ExowebDarkItem}}" >
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="8" />
-            </Border.StrokeShape>
-            
+            Margin="10, 5" >
+
             <ScrollView>
 
                 <StackLayout
@@ -64,53 +58,65 @@
 
                     <Entry 
                         x:Name="taskEntry" 
-                        Placeholder="New Todo" />
+                        Placeholder="New Todo" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" />
 
                     <Button 
                         Text="Add Todo" 
-                        Clicked="AddTaskOnClick" />
+                        Clicked="AddTaskOnClick" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" />
 
-                    <ListView 
+                    <CollectionView 
                         x:Name="todoListView" 
-                        ItemsSource="{Binding tasks}" >
+                        ItemsSource="{Binding tasks}" 
+                        CanReorderItems="True" >
 
-                        <ListView.ItemTemplate>
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
+                                <Border>
+                                    
                                     <Grid
-                                        Padding="0" >
+                                        Padding="0" 
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame
-                                            Grid.Column="0">
+                                        <Border
+                                            Grid.Column="0"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0"
+                                            Padding="8" >
 
                                             <Label 
                                                 Text="{Binding TaskItem}" 
                                                 x:Name="TaskItem" 
                                                 VerticalOptions="CenterAndExpand"
                                                 HorizontalOptions="StartAndExpand" />
-                                        </Frame>
+                                        </Border>
 
-                                        <Frame
-                                            Grid.Column="1">
+                                        <Border
+                                            Grid.Column="1"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0" 
+                                            Padding="8" >
 
                                             <Button 
                                                 Clicked="DeleteTaskOnClick" 
                                                 MaximumWidthRequest="200"
                                                 VerticalOptions="CenterAndExpand"
-                                                HorizontalOptions="CenterAndExpand" />
-                                        </Frame>
+                                                HorizontalOptions="CenterAndExpand" 
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
+                                        </Border>
                                     </Grid>
-                                </ViewCell>
+                                </Border>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
-        </ScrollView>
+            </ScrollView>
         </Border>
     </Grid>
 
