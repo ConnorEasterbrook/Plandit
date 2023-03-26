@@ -58,13 +58,11 @@
 
                     <Entry 
                         x:Name="taskEntry" 
-                        Placeholder="New Todo" 
-                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" />
+                        Placeholder="New Todo" />
 
                     <Button 
                         Text="Add Todo" 
-                        Clicked="AddTaskOnClick" 
-                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" />
+                        Clicked="AddTaskOnClick" />
 
                     <CollectionView 
                         x:Name="todoListView" 

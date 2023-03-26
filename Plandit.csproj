@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove=".gitignore" />
+	  <None Remove="LICENSE" />
 	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 	  <None Remove="Resources\Fonts\NotoSans-Regular.ttf" />
 	  <None Remove="Resources\Images\document.svg" />
@@ -61,7 +63,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Core\" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
 	</ItemGroup>
 
 </Project>

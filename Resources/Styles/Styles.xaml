@@ -33,7 +33,7 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource ExowebLightText}, Dark={StaticResource ExowebDarkText}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ExowebLightItem}, Dark={StaticResource ExowebDarkItem}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}" />
         <Setter Property="FontFamily" Value="NotoSans-Regular"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="CornerRadius" Value="5"/>
