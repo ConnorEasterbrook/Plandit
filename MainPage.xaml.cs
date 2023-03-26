@@ -1,6 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using Plandit.Core.Data;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Plandit;
 
@@ -38,9 +36,9 @@ public partial class MainPage : ContentPage
 	{
 		if (!string.IsNullOrEmpty(taskEntry.Text))
 		{
-			// Add task to list
-			tasks.Add(task);
-			taskEntry.Text = string.Empty;
+            // Add task to list
+            tasks.Add(new TaskClass { TaskTitle = taskEntry.Text });
+            taskEntry.Text = string.Empty;
         }
 	}
 
