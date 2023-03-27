@@ -18,8 +18,14 @@ public partial class MainPage : ContentPage
 		InitializeComponent(); // Initialize the XAML
 		BindingContext = this; // Bind the XAML to the C# code
 
-		todoListView.ItemsSource = App.TaskRepository.GetTasks();
-	}
+        ShowTasks();
+    }
+
+	private async void ShowTasks()
+	{
+        List<TodoTask> taskList = await App.TaskRepository.GetTasks();
+        todoListView.ItemsSource = taskList;
+    }
 
 	/// <summary>
 	/// Change the light mode of the application
@@ -36,15 +42,15 @@ public partial class MainPage : ContentPage
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
-	private void AddTaskOnClick(object sender, EventArgs e)
+	private async void AddTaskOnClick(object sender, EventArgs e)
 	{
 		if (!string.IsNullOrEmpty(taskEntry.Text))
 		{
             // Add task to list
-			App.TaskRepository.AddTask(taskEntry.Text);
+            await App.TaskRepository.AddTask(taskEntry.Text);
             taskEntry.Text = string.Empty;
 
-            todoListView.ItemsSource = App.TaskRepository.GetTasks();
+            ShowTasks();
         }
 	}
 
@@ -53,16 +59,16 @@ public partial class MainPage : ContentPage
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
-	private void DeleteTaskOnClick(object sender, EventArgs e)
+	private async void DeleteTaskOnClick(object sender, EventArgs e)
 	{
         var task = (sender as Button).BindingContext as TodoTask;
         if(task != null)
         {
 			// Remove task from list
 			int taskID = task.Id;
-			App.TaskRepository.DeleteTask(taskID);
+			await App.TaskRepository.DeleteTask(taskID);
 
-            todoListView.ItemsSource = App.TaskRepository.GetTasks();
+			ShowTasks();
         }
     }
 }

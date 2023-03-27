@@ -11,66 +11,52 @@ namespace Plandit
     public  class TaskRepository
     {
         private string _databasePath;
-        private SQLiteConnection connection;
+        private SQLiteAsyncConnection connection;
 
         public TaskRepository(string dbPath)
         {
             _databasePath = dbPath;
         }
 
-        private void Initialize()
+        private async Task Initialize()
         {
             if(connection != null)
             {
                 return;
             }
 
-            connection = new SQLiteConnection(_databasePath);
-            connection.CreateTable<TodoTask>();
+            connection = new SQLiteAsyncConnection(_databasePath);
+            await connection.CreateTableAsync<TodoTask>();
         }
 
-        public void AddTask(string name)
+        public async Task AddTask(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
                 return;
             }
 
-            Initialize();
+            await Initialize();
             int result = 0;
 
-            result = connection.Insert(new TodoTask { TaskTitle = name });
-            Console.WriteLine(result);
+            result = await connection.InsertAsync(new TodoTask { TaskTitle = name });
         }
 
-        public List<TodoTask> GetTasks()
+        public async Task<List<TodoTask>> GetTasks()
         {
-            Initialize();
+            await Initialize();
 
-            return connection.Table<TodoTask>().ToList();
+            return await connection.Table<TodoTask>().ToListAsync();
         }
 
-        public TodoTask GetTask(int id)
+        public async Task<TodoTask> GetTask(int id)
         {
-            return connection.Table<TodoTask>().FirstOrDefault(firstElement => firstElement.Id == id);
+            return await connection.Table<TodoTask>().FirstOrDefaultAsync(firstElement => firstElement.Id == id);
         }
 
-        public int DeleteTask(int id)
+        public async Task<int> DeleteTask(int id)
         {
-            return connection.Delete<TodoTask>(id);
-        }
-
-        public int SaveTask(TodoTask task)
-        {
-            if (task.Id != 0)
-            {
-                connection.Update(task);
-                return task.Id;
-            }
-            else
-            {
-                return connection.Insert(task);
-            }
+            return await connection.DeleteAsync<TodoTask>(id);
         }
     }
 }
