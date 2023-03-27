@@ -1,12 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using Plandit.Models;
+using SQLite;
+using System.Collections.ObjectModel;
 
 namespace Plandit;
 
 public partial class MainPage : ContentPage
 {
 	// Create a list of tasks
-	private ObservableCollection<TaskClass> _tasks = new ObservableCollection<TaskClass>();
-    public ObservableCollection<TaskClass> tasks
+	private ObservableCollection<TodoTask> _tasks = new ObservableCollection<TodoTask>();
+    public ObservableCollection<TodoTask> Tasks
 	{
 		get { return _tasks; }
 	}
@@ -15,6 +17,8 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent(); // Initialize the XAML
 		BindingContext = this; // Bind the XAML to the C# code
+
+		todoListView.ItemsSource = App.TaskRepository.GetTasks();
 	}
 
 	/// <summary>
@@ -37,8 +41,10 @@ public partial class MainPage : ContentPage
 		if (!string.IsNullOrEmpty(taskEntry.Text))
 		{
             // Add task to list
-            tasks.Add(new TaskClass { TaskTitle = taskEntry.Text });
+			App.TaskRepository.AddTask(taskEntry.Text);
             taskEntry.Text = string.Empty;
+
+            todoListView.ItemsSource = App.TaskRepository.GetTasks();
         }
 	}
 
@@ -49,25 +55,15 @@ public partial class MainPage : ContentPage
 	/// <param name="e"></param>
 	private void DeleteTaskOnClick(object sender, EventArgs e)
 	{
-        var task = (sender as Button).BindingContext as TaskClass;
+        var task = (sender as Button).BindingContext as TodoTask;
         if(task != null)
         {
 			// Remove task from list
-            tasks.Remove(task);
+			int taskID = task.Id;
+			App.TaskRepository.DeleteTask(taskID);
+
+            todoListView.ItemsSource = App.TaskRepository.GetTasks();
         }
     }
-}
-
-/// <summary>
-/// Class that stores Task Information
-/// </summary>
-public class TaskClass
-{
-	/*public int Id { get; set; }*/
-	public string TaskTitle { get; set; }
-	/*public bool IsCompleted { get; set; }
-	public DateTime CreatedAt { get; set; }
-	public DateTime CompletedAt { get; set; }
-	public DateTime DeadlineAt { get; set; }*/
 }
 
