@@ -42,7 +42,7 @@
 
                     <Button 
                         Text="Add Todo" 
-                        Clicked="AddTaskOnClick" />
+                        Clicked="AddProjectOnClick" />
 
                     <CollectionView 
             x:Name="todoListView" 
@@ -81,7 +81,7 @@
                                 Padding="8" >
 
                                             <Button 
-                                    Clicked="DeleteTaskOnClick" 
+                                    Clicked="DeleteProjectOnClick" 
                                     MaximumWidthRequest="200"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="CenterAndExpand" 

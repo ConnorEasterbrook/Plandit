@@ -13,8 +13,6 @@ namespace Plandit.Repositories
         private string _databasePath;
         private SQLiteAsyncConnection connection;
 
-        private ProjectModel _currentProject;
-
         public ProjectRepository(string dbPath)
         {
             _databasePath = dbPath;
@@ -50,8 +48,6 @@ namespace Plandit.Repositories
         public async Task<List<ProjectModel>> GetProjects()
         {
             await Initialize();
-
-            _currentProject = await connection.Table<ProjectModel>().FirstOrDefaultAsync();
             return await connection.Table<ProjectModel>().ToListAsync();
         }
 

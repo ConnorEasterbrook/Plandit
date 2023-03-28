@@ -19,6 +19,16 @@ public partial class MainPage : ContentPage
 		InitializeComponent(); // Initialize the XAML
     }
 
+    /// <summary>
+    /// Change the light mode of the application
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ChangeLightMode(object sender, EventArgs e)
+    {
+        /*Application.Current.UserAppTheme = count % 2 == 0 ? AppTheme.Light : AppTheme.Dark;*/
+    }
+
     private async void ShowProjects()
     {
         List<ProjectModel> projectList = await App.ProjectRepository.GetProjects();
@@ -32,7 +42,7 @@ public partial class MainPage : ContentPage
         await Navigation.PushAsync(planPage);
     }
 
-    private async void AddTaskOnClick(object sender, EventArgs e)
+    private async void AddProjectOnClick(object sender, EventArgs e)
     {
         if(!string.IsNullOrEmpty(taskEntry.Text))
         {
@@ -44,7 +54,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void DeleteTaskOnClick(object sender, EventArgs e)
+    private async void DeleteProjectOnClick(object sender, EventArgs e)
     {
         var task = (sender as Button).BindingContext as ProjectModel;
         if(task != null)
