@@ -1,20 +1,25 @@
 using System.Formats.Tar;
+using Microsoft.UI.Xaml.Media;
 using Plandit.Models;
 
 namespace Plandit.Pages;
 
 public partial class ProjectPlanPage : ContentPage
 {
-	public ProjectPlanPage()
+    private int projectId;
+
+    public ProjectPlanPage(ProjectModel project)
 	{
 		InitializeComponent();
+
+        projectId = project.Id;
 
         ShowTasks();
     }
 
     private async void ShowTasks()
     {
-        List<TodoTask> taskList = await App.TaskRepository.GetTasks();
+        List<TodoTask> taskList = await App.ProjectRepository.GetTasks(projectId);
         todoListView.ItemsSource = taskList;
     }
 
@@ -38,7 +43,7 @@ public partial class ProjectPlanPage : ContentPage
         if(!string.IsNullOrEmpty(taskEntry.Text))
         {
             // Add task to list
-            await App.TaskRepository.AddTask(taskEntry.Text);
+            await App.ProjectRepository.AddTask(taskEntry.Text, projectId);
             taskEntry.Text = string.Empty;
 
             ShowTasks();
@@ -57,7 +62,7 @@ public partial class ProjectPlanPage : ContentPage
         {
             // Remove task from list
             int taskID = task.Id;
-            await App.TaskRepository.DeleteTask(taskID);
+            await App.ProjectRepository.DeleteTask(taskID);
 
             ShowTasks();
         }

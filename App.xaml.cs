@@ -4,14 +4,14 @@ namespace Plandit;
 
 public partial class App : Application
 {
-	public static TaskRepository TaskRepository { get; private set; }
+	public static ProjectRepository ProjectRepository { get; private set; }
 
-	public App(TaskRepository repo)
+	public App(ProjectRepository projectRepository)
 	{
 		InitializeComponent();
 
 		MainPage = new AppShell();
 
-		TaskRepository = repo;
+		ProjectRepository = projectRepository;
 	}
 }

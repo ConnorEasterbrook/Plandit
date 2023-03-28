@@ -19,10 +19,42 @@ public partial class MainPage : ContentPage
 		InitializeComponent(); // Initialize the XAML
     }
 
-    private async void GoToTodoListPage(object sender, EventArgs e)
+    private async void ShowProjects()
     {
-        ProjectPlanPage planPage = new ProjectPlanPage();
+        List<ProjectModel> projectList = await App.ProjectRepository.GetProjects();
+        todoListView.ItemsSource = projectList;
+    }
+
+    private async void GoToProjectPage(object sender, EventArgs e)
+    {
+        var selectedProject = (sender as Button).BindingContext as ProjectModel;
+        ProjectPlanPage planPage = new ProjectPlanPage(selectedProject);
         await Navigation.PushAsync(planPage);
+    }
+
+    private async void AddTaskOnClick(object sender, EventArgs e)
+    {
+        if(!string.IsNullOrEmpty(taskEntry.Text))
+        {
+            // Add task to list
+            await App.ProjectRepository.AddProject(taskEntry.Text);
+            taskEntry.Text = string.Empty;
+
+            ShowProjects();
+        }
+    }
+
+    private async void DeleteTaskOnClick(object sender, EventArgs e)
+    {
+        var task = (sender as Button).BindingContext as ProjectModel;
+        if(task != null)
+        {
+            // Remove task from list
+            int taskID = task.Id;
+            await App.ProjectRepository.DeleteProject(taskID);
+
+            ShowProjects();
+        }
     }
 }
 
