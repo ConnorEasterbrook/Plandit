@@ -39,8 +39,9 @@
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MaximumHeightRequest" Value="100" />
         <Setter Property="MinimumWidthRequest" Value="44"/>
-        <Setter Property="MaximumWidthRequest" Value="150" />
+        <Setter Property="MaximumWidthRequest" Value="300" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

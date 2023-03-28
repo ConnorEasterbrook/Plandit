@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Plandit.Pages.ProjectPlanPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="10, 5" 
+            Padding="8" >
+
+            <VerticalStackLayout>
+                <Label Text="Project Title" />
+                <Label Text="Project Deadline" />
+            </VerticalStackLayout>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="10, 5"
+            Padding="8" >
+
+            <VerticalStackLayout>
+                <Label Text="Project Description" />
+                <Label Text="Well this project is just a text that will hopefully represent exactly how a fully set up project will look. An important part is making sure that this row can be scrolled away from because it's a bit obnoxious to have a big ol description box like this constantly in your face." />
+            </VerticalStackLayout>
+        </Border>
+
+        <Border
+            Grid.Row="2"
+            Margin="10, 5" >
+
+            <ScrollView>
+
+                <StackLayout
+                    VerticalOptions="StartAndExpand"
+                    Spacing="25"
+                    Padding="30, 30">
+
+                    <Entry 
+                        x:Name="taskEntry" 
+                        Placeholder="New Todo" />
+
+                    <Button 
+                        Text="Add Todo" 
+                        Clicked="AddTaskOnClick" />
+
+                    <CollectionView 
+                        x:Name="todoListView" 
+                        CanReorderItems="True" >
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border>
+
+                                    <Grid
+                                        Padding="0" 
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border
+                                            Grid.Column="0"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0"
+                                            Padding="8" >
+
+                                            <Label 
+                                                Text="{Binding TaskTitle}" 
+                                                x:Name="TaskItem" 
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="StartAndExpand" />
+                                        </Border>
+
+                                        <Border
+                                            Grid.Column="1"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0" 
+                                            Padding="8" >
+
+                                            <Button 
+                                                Clicked="DeleteTaskOnClick" 
+                                                MaximumWidthRequest="200"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿namespace Plandit;
+﻿using Plandit.Repositories;
+
+namespace Plandit;
 
 public partial class App : Application
 {

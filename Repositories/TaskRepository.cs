@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using SQLite;
 using Plandit.Models;
 
-namespace Plandit
+namespace Plandit.Repositories
 {
-    public  class TaskRepository
+    public class TaskRepository
     {
         private string _databasePath;
         private SQLiteAsyncConnection connection;
@@ -20,7 +20,7 @@ namespace Plandit
 
         private async Task Initialize()
         {
-            if(connection != null)
+            if (connection != null)
             {
                 return;
             }
