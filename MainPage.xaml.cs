@@ -17,6 +17,8 @@ public partial class MainPage : ContentPage
     public MainPage()
 	{
 		InitializeComponent(); // Initialize the XAML
+
+        ShowProjects();
     }
 
     /// <summary>
@@ -29,6 +31,9 @@ public partial class MainPage : ContentPage
         /*Application.Current.UserAppTheme = count % 2 == 0 ? AppTheme.Light : AppTheme.Dark;*/
     }
 
+    /// <summary>
+    /// Show all projects. Called whenever a change occurs
+    /// </summary>
     private async void ShowProjects()
     {
         List<ProjectModel> projectList = await App.ProjectRepository.GetProjects();
@@ -37,7 +42,7 @@ public partial class MainPage : ContentPage
 
     private async void GoToProjectPage(object sender, EventArgs e)
     {
-        var selectedProject = (sender as Button).BindingContext as ProjectModel;
+        var selectedProject = (sender as Grid).BindingContext as ProjectModel;
         ProjectPlanPage planPage = new ProjectPlanPage(selectedProject);
         await Navigation.PushAsync(planPage);
     }

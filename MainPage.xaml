@@ -45,51 +45,51 @@
                         Clicked="AddProjectOnClick" />
 
                     <CollectionView 
-            x:Name="todoListView" 
-            CanReorderItems="True" >
+                        x:Name="todoListView" 
+                        CanReorderItems="True" >
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
 
                                     <Grid
-                            Padding="0" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
+                                        Padding="0" 
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="GoToProjectPage" />
+                                        </Grid.GestureRecognizers>
+
                                         <Border
-                                Grid.Column="0"
-                                BackgroundColor="Transparent" 
-                                StrokeThickness="0"
-                                Padding="8" >
+                                            Grid.Column="0"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0"
+                                            Padding="8" >
 
                                             <Label 
-                                    Text="{Binding TaskTitle}" 
-                                    x:Name="TaskItem" 
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand" />
+                                                Text="{Binding ProjectTitle}" 
+                                                x:Name="TaskItem" 
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="StartAndExpand" />
                                         </Border>
 
                                         <Border
-                                Grid.Column="1"
-                                BackgroundColor="Transparent" 
-                                StrokeThickness="0" 
-                                Padding="8" >
+                                            Grid.Column="1"
+                                            BackgroundColor="Transparent" 
+                                            StrokeThickness="0" 
+                                            Padding="8" >
 
                                             <Button 
-                                    Clicked="DeleteProjectOnClick" 
-                                    MaximumWidthRequest="200"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="CenterAndExpand" 
-                                    BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
-                                        </Border>
-
-                                        <Border>
-                                            <Button Text="Go to Todo List" Clicked="GoToProjectPage" />
+                                                Clicked="DeleteProjectOnClick" 
+                                                MaximumWidthRequest="200"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
                                         </Border>
                                     </Grid>
                                 </Border>
