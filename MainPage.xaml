@@ -3,102 +3,104 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plandit.MainPage">
 
-    <ContentPage.Resources>
-        <StyleSheet Source="/Resources/Styles/MainPage.css" />
-    </ContentPage.Resources>
+	<ContentPage.Resources>
+		<StyleSheet Source="/Resources/Styles/MainPage.css" />
+	</ContentPage.Resources>
 
-    <!-- TODO:
-    Step 1: Create a basic To-do list that can be reordered
-    Step 2: Get data saving sorted
-    Step 3: Allow for folders to store to-do lists
+	<!-- TODO:
     Step 4: Allow for to-do tasks inside to-do tasks
     Step 5: Allow for time management and linking to calendars
     Step 6: Create push notifications
     Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress / Milestones) -->
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
 
-
-        <Label Text="Hello" />
-
-        <Border
+		<Border
             Grid.Row="1"
             Margin="10, 5" >
 
-            <ScrollView>
-
-                <StackLayout
+			<ScrollView>
+				<StackLayout
                     VerticalOptions="StartAndExpand"
                     Spacing="25"
                     Padding="30, 30">
 
-                    <Entry 
-                        x:Name="taskEntry" 
-                        Placeholder="New Todo" />
-
-                    <Button 
-                        Text="Add Todo" 
-                        Clicked="AddProjectOnClick" />
-
-                    <CollectionView 
-                        x:Name="todoListView" 
+					<CollectionView
+                        x:Name="todoListView"
                         CanReorderItems="True" >
 
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Border>
+						<CollectionView.ItemTemplate>
+							<DataTemplate>
+								<Border>
 
-                                    <Grid
-                                        Padding="0" 
+									<Grid
+                                        Padding="5"
+                                        VerticalOptions="CenterAndExpand"
                                         BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
 
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="GoToProjectPage" />
-                                        </Grid.GestureRecognizers>
+										<Grid.GestureRecognizers>
+											<TapGestureRecognizer Tapped="GoToProjectPage" />
+										</Grid.GestureRecognizers>
 
-                                        <Border
+										<Border
                                             Grid.Column="0"
-                                            BackgroundColor="Transparent" 
+                                            BackgroundColor="Transparent"
                                             StrokeThickness="0"
-                                            Padding="8" >
+                                            Padding="8"
+                                            VerticalOptions="CenterAndExpand" >
 
-                                            <Label 
-                                                Text="{Binding ProjectTitle}" 
-                                                x:Name="TaskItem" 
+											<Label
+                                                Text="{Binding ProjectTitle}"
+                                                x:Name="TaskItem"
                                                 VerticalOptions="CenterAndExpand"
                                                 HorizontalOptions="StartAndExpand" />
-                                        </Border>
+										</Border>
 
-                                        <Border
+										<Border
                                             Grid.Column="1"
-                                            BackgroundColor="Transparent" 
-                                            StrokeThickness="0" 
-                                            Padding="8" >
+                                            BackgroundColor="Transparent"
+                                            StrokeThickness="0"
+                                            Padding="8"
+                                            VerticalOptions="CenterAndExpand" >
 
-                                            <Button 
-                                                Clicked="DeleteProjectOnClick" 
+											<Button
+                                                Clicked="DeleteProjectOnClick"
                                                 MaximumWidthRequest="200"
                                                 VerticalOptions="CenterAndExpand"
-                                                HorizontalOptions="CenterAndExpand" 
+                                                HorizontalOptions="CenterAndExpand"
                                                 BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
-                                        </Border>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
-        </Border>
-    </Grid>
+										</Border>
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</CollectionView.ItemTemplate>
+					</CollectionView>
+				</StackLayout>
+
+				<AbsoluteLayout
+                    WidthRequest="64"
+                    HeightRequest="64"
+                    LayoutBounds="1, 1, AutoSize, AutoSize"
+                    Margin="10">
+					
+					<ImageButton
+                        Source="add.png"
+                        BackgroundColor="Transparent"
+                        WidthRequest="64"
+                        HeightRequest="64"
+                        Clicked="AddProjectOnClick" />
+				</AbsoluteLayout>
+			</ScrollView>
+		</Border>
+	</Grid>
 
 </ContentPage>
