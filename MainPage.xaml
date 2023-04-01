@@ -17,90 +17,89 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-		<Border
+        <Border
             Grid.Row="1"
             Margin="10, 5" >
 
-			<ScrollView>
-				<StackLayout
+            <ScrollView>
+                <StackLayout
                     VerticalOptions="StartAndExpand"
                     Spacing="25"
                     Padding="30, 30">
 
-					<CollectionView
+                    <CollectionView
                         x:Name="todoListView"
                         CanReorderItems="True" >
 
-						<CollectionView.ItemTemplate>
-							<DataTemplate>
-								<Border>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border>
 
-									<Grid
+                                    <Grid
                                         Padding="5"
                                         VerticalOptions="CenterAndExpand"
                                         BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
 
-										<Grid.ColumnDefinitions>
-											<ColumnDefinition Width="*" />
-											<ColumnDefinition Width="Auto" />
-										</Grid.ColumnDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-										<Grid.GestureRecognizers>
-											<TapGestureRecognizer Tapped="GoToProjectPage" />
-										</Grid.GestureRecognizers>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="GoToProjectPage" />
+                                        </Grid.GestureRecognizers>
 
-										<Border
+                                        <Border
                                             Grid.Column="0"
                                             BackgroundColor="Transparent"
                                             StrokeThickness="0"
                                             Padding="8"
                                             VerticalOptions="CenterAndExpand" >
 
-											<Label
+                                            <Label
                                                 Text="{Binding ProjectTitle}"
                                                 x:Name="TaskItem"
                                                 VerticalOptions="CenterAndExpand"
                                                 HorizontalOptions="StartAndExpand" />
-										</Border>
+                                        </Border>
 
-										<Border
+                                        <Border
                                             Grid.Column="1"
                                             BackgroundColor="Transparent"
                                             StrokeThickness="0"
                                             Padding="8"
                                             VerticalOptions="CenterAndExpand" >
 
-											<Button
+                                            <Button
                                                 Clicked="DeleteProjectOnClick"
                                                 MaximumWidthRequest="200"
                                                 VerticalOptions="CenterAndExpand"
                                                 HorizontalOptions="CenterAndExpand"
                                                 BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}" />
-										</Border>
-									</Grid>
-								</Border>
-							</DataTemplate>
-						</CollectionView.ItemTemplate>
-					</CollectionView>
-				</StackLayout>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </Border>
 
-				<AbsoluteLayout
-                    WidthRequest="64"
-                    HeightRequest="64"
-                    LayoutBounds="1, 1, AutoSize, AutoSize"
-                    Margin="10">
-					
-					<ImageButton
-                        Source="add.png"
-                        BackgroundColor="Transparent"
-                        WidthRequest="64"
-                        HeightRequest="64"
-                        Clicked="AddProjectOnClick" />
-				</AbsoluteLayout>
-			</ScrollView>
-		</Border>
-	</Grid>
+        <StackLayout Grid.Row="2"
+                 HorizontalOptions="End"
+                 VerticalOptions="End"
+                 Padding="20">
+            <ImageButton
+            Source="home.png"
+            BackgroundColor="Transparent"
+            WidthRequest="64"
+            HeightRequest="64"
+            Clicked="AddProjectOnClick" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

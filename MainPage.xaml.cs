@@ -49,14 +49,14 @@ public partial class MainPage : ContentPage
 
     private async void AddProjectOnClick(object sender, EventArgs e)
     {
-        if(!string.IsNullOrEmpty(taskEntry.Text))
+        /*if(!string.IsNullOrEmpty(taskEntry.Text))
         {
             // Add task to list
             await App.ProjectRepository.AddProject(taskEntry.Text);
             taskEntry.Text = string.Empty;
 
             ShowProjects();
-        }
+        }*/
     }
 
     private async void DeleteProjectOnClick(object sender, EventArgs e)
