@@ -89,16 +89,18 @@
             </ScrollView>
         </Border>
 
-        <StackLayout Grid.Row="2"
-                 HorizontalOptions="End"
-                 VerticalOptions="End"
-                 Padding="20">
+        <StackLayout 
+            Grid.Row="2"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Padding="20">
+            
             <ImageButton
-            Source="home.png"
-            BackgroundColor="Transparent"
-            WidthRequest="64"
-            HeightRequest="64"
-            Clicked="AddProjectOnClick" />
+                Source="home.png"
+                BackgroundColor="Transparent"
+                WidthRequest="64"
+                HeightRequest="64"
+                Clicked="AddProjectOnClick" />
         </StackLayout>
     </Grid>
 
