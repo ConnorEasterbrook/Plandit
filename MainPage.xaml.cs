@@ -70,18 +70,20 @@ public partial class MainPage : ContentPage
 
         // Create a StackLayout to hold the input fields
         StackLayout stackLayout = new StackLayout();
+        stackLayout.Padding = 20;
 
         // Create two Entry fields for title and description and add the Entry fields to the StackLayout
         Entry titleEntry = new Entry { Placeholder = "Title" };
+        titleEntry.Margin = new Thickness(0, 20);
         stackLayout.Children.Add(titleEntry);
 
         Entry descriptionEntry = new Entry { Placeholder = "Description" };
         stackLayout.Children.Add(descriptionEntry);
 
-        // Create a Button for submitting the input
+        // Create a Button for submitting the input and give it functionality. Then add it to the StackLayout
         Button submitButton = new Button { Text = "Submit" };
-
-        submitButton.Clicked += async (s, args) =>
+        submitButton.Margin = new Thickness(20, 20);
+        submitButton.Clicked += (s, args) =>
         {
             ProjectName = titleEntry.Text;
             ProjectDescription = descriptionEntry.Text;
@@ -90,13 +92,18 @@ public partial class MainPage : ContentPage
             popup.Close();
         };
 
+        stackLayout.Children.Add(submitButton);
+
+        // Assign the content inside the popup
         popup.Content = new Border
         {
             BackgroundColor = Application.Current.UserAppTheme == AppTheme.Dark ? GetColour("ExowebLightBackground") : GetColour("ExowebDarkBackground"),
             Padding = new Thickness(20),
             Content = stackLayout
         };
+        popup.Color = Color.FromArgb("#00000000");
 
+        // Show the popup
         await this.ShowPopupAsync(popup);
     }
 
