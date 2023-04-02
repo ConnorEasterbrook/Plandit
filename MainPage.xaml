@@ -41,7 +41,7 @@
                                     <Grid
                                         Padding="5"
                                         VerticalOptions="CenterAndExpand"
-                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}">
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}" >
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -94,13 +94,54 @@
             HorizontalOptions="End"
             VerticalOptions="End"
             Padding="20">
-            
+
+            <Frame
+                x:Name="addProjectFrame"
+                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}"
+                HasShadow="True"
+                Padding="20"
+                IsVisible="False"
+                CornerRadius="10">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label 
+                        Text="Add a Project"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"/>
+
+                    <Entry 
+                        Placeholder="Enter Project Title"
+                        x:Name="projectTitleEntry"
+                        Grid.Row="1"/>
+
+                    <Entry 
+                        Placeholder="Enter Project Description"
+                        x:Name="projectDescriptionEntry"
+                        Grid.Row="2"/>
+
+                    <Button 
+                        Text="Add Project"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Grid.Row="3"/>
+                </Grid>
+
+            </Frame>
+
             <ImageButton
                 Source="home.png"
                 BackgroundColor="Transparent"
                 WidthRequest="64"
                 HeightRequest="64"
-                Clicked="AddProjectOnClick" />
+                Clicked="AddProjectButtonClicked" />
         </StackLayout>
     </Grid>
 
