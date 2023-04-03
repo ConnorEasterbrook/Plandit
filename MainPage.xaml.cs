@@ -122,8 +122,12 @@ public partial class MainPage : ContentPage
     {
         if(!string.IsNullOrEmpty(_projectName))
         {
+            ProjectModel project = new ProjectModel();
+            project.ProjectTitle = _projectName;
+            project.ProjectDescription = _projectDescription;
+
             // Add task to list
-            await App.ProjectRepository.AddProject(_projectName);
+            await App.ProjectRepository.AddProject(project);
             _projectName = string.Empty;
 
             ShowProjects();

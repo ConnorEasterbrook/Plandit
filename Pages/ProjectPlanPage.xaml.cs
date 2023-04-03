@@ -12,6 +12,8 @@ public partial class ProjectPlanPage : ContentPage
 		InitializeComponent();
 
         projectId = project.Id;
+        projectTitle.Text = project.ProjectTitle;
+        projectDescription.Text = project.ProjectDescription;
 
         ShowTasks();
     }

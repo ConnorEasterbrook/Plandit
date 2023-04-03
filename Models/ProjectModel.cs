@@ -17,6 +17,9 @@ namespace Plandit.Models
         [MaxLength(100), Unique]
         public string ProjectTitle { get; set; }
 
+        [MaxLength(2000)]
+        public string ProjectDescription { get; set; }
+
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<TodoTask> Tasks { get; set; }
     }

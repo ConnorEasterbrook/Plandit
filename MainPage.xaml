@@ -8,10 +8,9 @@
 	</ContentPage.Resources>
 
 	<!-- TODO:
-    Step 4: Allow for to-do tasks inside to-do tasks
     Step 5: Allow for time management and linking to calendars
     Step 6: Create push notifications
-    Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress / Milestones) -->
+    Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress) -->
 
 	<Grid>
 		<Grid.RowDefinitions>

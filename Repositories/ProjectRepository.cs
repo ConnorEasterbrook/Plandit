@@ -30,9 +30,9 @@ namespace Plandit.Repositories
             await connection.CreateTableAsync<TodoTask>();
         }
 
-        public async Task AddProject(string name)
+        public async Task AddProject(ProjectModel project)
         {
-            if(string.IsNullOrEmpty(name))
+            if(string.IsNullOrEmpty(project.ProjectTitle))
             {
                 return;
             }
@@ -43,11 +43,12 @@ namespace Plandit.Repositories
             {
                 await connection.InsertAsync(new ProjectModel
                 {
-                    ProjectTitle = name,
+                    ProjectTitle = project.ProjectTitle,
+                    ProjectDescription = project.ProjectDescription,
                     Tasks = new List<TodoTask>()
                 });
             }
-            catch (Exception ex)
+            catch
             {
                 return;
             }
@@ -67,13 +68,22 @@ namespace Plandit.Repositories
         public async Task<int> DeleteProject(int id)
         {
             List<TodoTask> tasks = await GetTasks(id);
-            foreach (TodoTask task in tasks)
-            {
-                await DeleteTask(task.Id);
-                tasks.Remove(task);
-            }
 
-            return await connection.DeleteAsync<ProjectModel>(id);
+            try
+            {
+
+                foreach(TodoTask task in tasks)
+                {
+                    await DeleteTask(task.Id);
+                    tasks.Remove(task);
+                }
+
+                return await connection.DeleteAsync<ProjectModel>(id);
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public async Task AddTask(string name, int projectID)
