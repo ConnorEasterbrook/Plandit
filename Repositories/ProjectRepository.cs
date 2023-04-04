@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using Plandit.Models;
+using System.Diagnostics;
 
 namespace Plandit.Repositories
 {
@@ -32,11 +33,6 @@ namespace Plandit.Repositories
 
         public async Task AddProject(ProjectModel project)
         {
-            if(string.IsNullOrEmpty(project.ProjectTitle))
-            {
-                return;
-            }
-
             await Initialize();
 
             try
@@ -45,11 +41,16 @@ namespace Plandit.Repositories
                 {
                     ProjectTitle = project.ProjectTitle,
                     ProjectDescription = project.ProjectDescription,
+                    DateSpan = project.DateSpan,
+
                     Tasks = new List<TodoTask>()
                 });
+
+                Debug.WriteLine("Project added");
             }
             catch
             {
+                Debug.WriteLine("Project not added");
                 return;
             }
         }

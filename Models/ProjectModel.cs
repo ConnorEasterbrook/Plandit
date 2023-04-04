@@ -20,6 +20,8 @@ namespace Plandit.Models
         [MaxLength(2000)]
         public string ProjectDescription { get; set; }
 
+        public DateTime DateSpan { get; set; } 
+
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<TodoTask> Tasks { get; set; }
     }

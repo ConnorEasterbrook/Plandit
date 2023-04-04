@@ -17,7 +17,7 @@
 
             <VerticalStackLayout>
                 <Label x:Name="projectTitle" Text="Project Title" />
-                <Label Text="Project Deadline" />
+                <Label x:Name="projectDeadline" Text="Project Deadline" />
             </VerticalStackLayout>
         </Border>
 

@@ -1,35 +1,13 @@
 ﻿using Plandit.Models;
 using Plandit.Pages;
-using SQLite;
-using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Views;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace Plandit;
 
 public partial class MainPage : ContentPage
 {
-    private ObservableCollection<ProjectPlanPage> _projectPlans = new ObservableCollection<ProjectPlanPage>();
-    public ObservableCollection<ProjectPlanPage> ProjectPlans
-    {
-        get { return _projectPlans; }
-    }
-
-    private string _projectName;
-    public string ProjectName
-    {
-        get { return _projectName; }
-        set { _projectName = value; OnPropertyChanged(); }
-    }
-
-    private string _projectDescription;
-    public string ProjectDescription
-    {
-        get { return _projectDescription; }
-        set { _projectDescription = value; OnPropertyChanged(); }
-    }
-
     public MainPage()
 	{
 		InitializeComponent(); // Initialize the XAML
@@ -71,24 +49,32 @@ public partial class MainPage : ContentPage
         // Create a StackLayout to hold the input fields
         StackLayout stackLayout = new StackLayout();
         stackLayout.Padding = 20;
+        stackLayout.VerticalOptions = LayoutOptions.Center;
 
         // Create two Entry fields for title and description and add the Entry fields to the StackLayout
         Entry titleEntry = new Entry { Placeholder = "Title" };
-        titleEntry.Margin = new Thickness(0, 20);
         stackLayout.Children.Add(titleEntry);
 
         Entry descriptionEntry = new Entry { Placeholder = "Description" };
         stackLayout.Children.Add(descriptionEntry);
 
+        // Create a time picker so a deadline can be assigned
+        DatePicker datePicker = new DatePicker();
+        datePicker.HorizontalOptions = LayoutOptions.Center;
+        stackLayout.Children.Add(datePicker);
+
         // Create a Button for submitting the input and give it functionality. Then add it to the StackLayout
         Button submitButton = new Button { Text = "Submit" };
-        submitButton.Margin = new Thickness(20, 20);
         submitButton.Clicked += (s, args) =>
         {
-            ProjectName = titleEntry.Text;
-            ProjectDescription = descriptionEntry.Text;
+            ProjectModel project = new ProjectModel
+            {
+                ProjectTitle = titleEntry.Text,
+                ProjectDescription = descriptionEntry.Text,
+                DateSpan = datePicker.Date
+            };
 
-            AddProjectOnClick();
+            AddProjectOnClick(project);
             popup.Close();
         };
 
@@ -118,19 +104,18 @@ public partial class MainPage : ContentPage
         return returnColour;
     }
 
-    private async void AddProjectOnClick()
+    private async void AddProjectOnClick(ProjectModel project)
     {
-        if(!string.IsNullOrEmpty(_projectName))
+        Debug.WriteLine("AddProjectOnClick");
+        if(!string.IsNullOrEmpty(project.ProjectTitle))
         {
-            ProjectModel project = new ProjectModel();
-            project.ProjectTitle = _projectName;
-            project.ProjectDescription = _projectDescription;
-
             // Add task to list
             await App.ProjectRepository.AddProject(project);
-            _projectName = string.Empty;
+            projectTitleEntry.Text = string.Empty;
 
             ShowProjects();
+
+            Debug.WriteLine("Added project");
         }
     }
 

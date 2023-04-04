@@ -14,6 +14,7 @@ public partial class ProjectPlanPage : ContentPage
         projectId = project.Id;
         projectTitle.Text = project.ProjectTitle;
         projectDescription.Text = project.ProjectDescription;
+        projectDeadline.Text = "Deadline: " + project.DateSpan.ToShortDateString();
 
         ShowTasks();
     }
