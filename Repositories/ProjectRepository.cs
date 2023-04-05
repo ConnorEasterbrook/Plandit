@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -109,13 +109,10 @@ namespace Plandit.Repositories
             return await connection.Table<TodoTask>().Where(task => task.ProjectId == projectID).ToListAsync();
         }
 
-        public async Task<TodoTask> GetTask(int id)
-        {
-            return await connection.Table<TodoTask>().FirstOrDefaultAsync(firstElement => firstElement.Id == id);
-        }
-
         public async Task<int> DeleteTask(int id)
         {
+            await Initialize();
+
             return await connection.DeleteAsync<TodoTask>(id);
         }
     }

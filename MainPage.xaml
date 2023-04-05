@@ -3,16 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plandit.MainPage">
 
-	<ContentPage.Resources>
-		<StyleSheet Source="/Resources/Styles/MainPage.css" />
-	</ContentPage.Resources>
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/MainPage.css" />
+    </ContentPage.Resources>
 
-	<!-- TODO:
-    Step 5: Allow for time management and linking to calendars
-    Step 6: Create push notifications
-    Step 7: Beautify folders to represemt projects (Deadline / Desc / Progress) -->
-
-	<Grid>
+    <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
@@ -135,12 +130,14 @@
 
             </Frame>
 
-            <ImageButton
-                Source="home.png"
-                BackgroundColor="Transparent"
-                WidthRequest="64"
-                HeightRequest="64"
-                Clicked="AddProjectButtonClicked" />
+            <Border
+                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightAccent}, Dark={StaticResource ExowebDarkAccent}}"
+                    WidthRequest="64"
+                    HeightRequest="64">
+                <ImageButton
+                    Source="plus.png"
+                    Clicked="AddProjectButtonClicked" />
+            </Border>
         </StackLayout>
     </Grid>
 
