@@ -22,6 +22,5 @@ namespace Plandit.Models
 
         [MaxLength(100), Unique]
         public string TaskTitle { get; set; }
-        public bool IsCompleted { get; set; }
     }
 }
