@@ -8,6 +8,7 @@
     </ContentPage.Resources>
 
     <Grid>
+        
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
@@ -16,13 +17,14 @@
 
         <Border
             Grid.Row="1"
-            Margin="10, 5" >
+            BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" 
+            Margin="5, 5" >
 
             <ScrollView>
                 <StackLayout
                     VerticalOptions="StartAndExpand"
                     Spacing="25"
-                    Padding="30, 30">
+                    Padding="10, 5">
 
                     <CollectionView
                         x:Name="todoListView"
@@ -34,8 +36,7 @@
 
                                     <Grid
                                         Padding="5"
-                                        VerticalOptions="CenterAndExpand"
-                                        BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}" >
+                                        VerticalOptions="CenterAndExpand">
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -85,13 +86,13 @@
 
         <StackLayout 
             Grid.Row="2"
+            BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightBackground}, Dark={StaticResource ExowebDarkBackground}}" 
             HorizontalOptions="End"
             VerticalOptions="End"
             Padding="20">
 
             <Frame
                 x:Name="addProjectFrame"
-                BackgroundColor="{AppThemeBinding Light={StaticResource ExowebLightDecor}, Dark={StaticResource ExowebDarkDecor}}"
                 HasShadow="True"
                 Padding="20"
                 IsVisible="False"

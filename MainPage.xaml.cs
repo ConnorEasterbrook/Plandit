@@ -48,19 +48,22 @@ public partial class MainPage : ContentPage
 
         // Create a StackLayout to hold the input fields
         StackLayout stackLayout = new StackLayout();
-        stackLayout.Padding = 20;
+        stackLayout.Padding = 5;
         stackLayout.VerticalOptions = LayoutOptions.Center;
 
         // Create two Entry fields for title and description and add the Entry fields to the StackLayout
         Entry titleEntry = new Entry { Placeholder = "Title" };
+        titleEntry.TextColor = Application.Current.UserAppTheme == AppTheme.Dark ? GetColour("ExowebLightText") : GetColour("ExowebDarkText");
         stackLayout.Children.Add(titleEntry);
 
         Entry descriptionEntry = new Entry { Placeholder = "Description" };
+        descriptionEntry.TextColor = Application.Current.UserAppTheme == AppTheme.Dark ? GetColour("ExowebLightText") : GetColour("ExowebDarkText");
         stackLayout.Children.Add(descriptionEntry);
 
         // Create a time picker so a deadline can be assigned
         DatePicker datePicker = new DatePicker();
         datePicker.HorizontalOptions = LayoutOptions.Center;
+        datePicker.TextColor = Application.Current.UserAppTheme == AppTheme.Dark ? GetColour("ExowebLightText") : GetColour("ExowebDarkText");
         stackLayout.Children.Add(datePicker);
 
         // Create a Button for submitting the input and give it functionality. Then add it to the StackLayout
@@ -84,10 +87,14 @@ public partial class MainPage : ContentPage
         popup.Content = new Border
         {
             BackgroundColor = Application.Current.UserAppTheme == AppTheme.Dark ? GetColour("ExowebLightBackground") : GetColour("ExowebDarkBackground"),
-            Padding = new Thickness(20),
+            Padding = new Thickness(5),
+            WidthRequest = 250,
+            HeightRequest = 300,
             Content = stackLayout
         };
         popup.Color = Color.FromArgb("#00000000");
+
+        Debug.WriteLine(DeviceDisplay.MainDisplayInfo.Width);
 
         // Show the popup
         await this.ShowPopupAsync(popup);

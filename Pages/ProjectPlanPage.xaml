@@ -41,7 +41,7 @@
                 <StackLayout
                     VerticalOptions="StartAndExpand"
                     Spacing="25"
-                    Padding="30, 30">
+                    Padding="10, 5">
 
                     <Entry 
                         x:Name="taskEntry" 
