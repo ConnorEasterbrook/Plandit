@@ -1,5 +1,5 @@
 # Plandit
-Plandit is a typical Todo Task application but with the ability to create multiple different Todo lists to represent your projects. The application is built using C#, ASP .NET, Python, and JavaScript. It uses Python to serialise and analyse data on a JSON file, which is then extracted with C# for a JavaScript front end. Conversly, information entered from the JavaScript front end goes through the C# controller for the Python to handle.
+Plandit is a typical Todo Task application but with the ability to create multiple different Todo lists to represent your projects. The application is built using C#, .NET MAUI, and SQLite. The XAML front-end allows for users to press a button that makes the backend launch a popup with input boxes. These inputs are then used to add elements into an SQLite database, through the C# backend. Multiple projects can be worked on at once.
 
 ## Technologies
 List of technologies or frameworks used in the project.
